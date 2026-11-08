@@ -1,499 +1,587 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dinara Bilal | Portfolio</title>
-    <style>
-        /* Base & Color Variables */
-        :root {
-            --primary-pink: #ec4899;
-            --pink-hover: #db2777;
-            --soft-pink: #fbcfe8;
-            --bg-light-pink: #fff5f7;
-            --card-bg: #ffffff;
-            --text-dark: #1f2937;
-            --text-muted: #4b5563;
-            --border-pink: #f472b6;
-            --shadow: 0 4px 20px rgba(236, 72, 153, 0.12);
-            --transition: all 0.3s ease;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dinara Bilal | Portfolio</title>
+  <style>
+    /* --- CSS VARIABLES & RESET --- */
+    :root {
+      --primary: #ec4899;
+      --primary-hover: #db2777;
+      --primary-light: #fbcfe8;
+      --bg-gradient: linear-gradient(135deg, #fff5f8 0%, #fdf2f8 50%, #fae8ff 100%);
+      --card-bg: #ffffff;
+      --text-main: #374151;
+      --text-muted: #6b7280;
+      --shadow-sm: 0 4px 6px -1px rgba(236, 72, 153, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 10px 15px -3px rgba(236, 72, 153, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-hover: 0 20px 25px -5px rgba(236, 72, 153, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --radius: 16px;
+      --radius-sm: 8px;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-light-pink);
-            color: var(--text-dark);
-            line-height: 1.6;
-            padding: 0;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem 1.2rem;
-        }
+    body {
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 40px;
+    }
 
-        /* Section Block Base */
-        section {
-            background-color: var(--card-bg);
-            padding: 2.2rem;
-            margin-bottom: 2rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(251, 207, 232, 0.6);
-        }
+    /* --- LAYOUT CONTAINER --- */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-        h2 {
-            color: var(--primary-pink);
-            font-size: 1.6rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
+    section {
+      padding: 60px 0;
+    }
 
-        h2::after {
-            content: '';
-            display: block;
-            width: 100%;
-            height: 3px;
-            background-color: var(--soft-pink);
-            border-radius: 2px;
-            margin-top: 4px;
-        }
+    /* --- TYPOGRAPHY --- */
+    h2.section-title {
+      color: var(--primary);
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 36px;
+      position: relative;
+    }
 
-        /* Base Button Styles */
-        .btn {
-            display: inline-block;
-            padding: 0.65rem 1.4rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: var(--transition);
-            cursor: pointer;
-            text-align: center;
-        }
+    h2.section-title::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 4px;
+      background: var(--primary-light);
+      margin: 8px auto 0;
+      border-radius: 2px;
+    }
 
-        .btn-primary {
-            background-color: var(--primary-pink);
-            color: #ffffff;
-            border: 2px solid var(--primary-pink);
-        }
+    /* --- HERO SECTION --- */
+    .hero {
+      text-align: center;
+      padding: 100px 0 60px;
+    }
 
-        .btn-primary:hover {
-            background-color: var(--pink-hover);
-            border-color: var(--pink-hover);
-            transform: translateY(-2px);
-        }
+    .badge {
+      display: inline-block;
+      background-color: var(--primary-light);
+      color: var(--primary-hover);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(236, 72, 153, 0.2);
+    }
 
-        .btn-outline {
-            background-color: transparent;
-            color: var(--primary-pink);
-            border: 2px solid var(--primary-pink);
-        }
+    .hero h1 {
+      font-size: 3.2rem;
+      color: #1f2937;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
 
-        .btn-outline:hover {
-            background-color: var(--primary-pink);
-            color: #ffffff;
-            transform: translateY(-2px);
-        }
+    .hero p.subtitle {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      font-weight: 500;
+    }
 
-        .btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
-        /* 1. Hero Section */
-        .hero {
-            text-align: center;
-            padding: 3.5rem 1.5rem;
-            background: linear-gradient(135deg, #ffffff 0%, var(--bg-light-pink) 50%, var(--soft-pink) 100%);
-            border-radius: 24px;
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
-            border: 1px solid rgba(236, 72, 153, 0.2);
-        }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
 
-        .hero h1 {
-            color: var(--primary-pink);
-            font-size: 2.8rem;
-            margin-bottom: 0.4rem;
-            font-weight: 800;
-        }
+    .btn-primary {
+      background-color: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+    }
 
-        .hero .subtitle {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(236, 72, 153, 0.4);
+    }
 
-        .badge {
-            display: inline-block;
-            background-color: var(--primary-pink);
-            color: #ffffff;
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 10px rgba(236, 72, 153, 0.25);
-        }
+    .btn-secondary {
+      background-color: #ffffff;
+      color: var(--primary);
+      border: 2px solid var(--primary-light);
+    }
 
-        .hero .btn-group {
-            justify-content: center;
-        }
+    .btn-secondary:hover {
+      background-color: #fdf2f8;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
 
-        /* 2. About Me */
-        .about-text {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
+    /* --- CARDS & GENERAL CONTENT --- */
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(251, 207, 232, 0.5);
+      transition: all 0.3s ease;
+    }
 
-        /* 3. Skills Section */
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
+    .card:hover {
+      box-shadow: var(--shadow-md);
+    }
 
-        .skill-pill {
-            background-color: var(--bg-light-pink);
-            color: var(--primary-pink);
-            border: 1.5px solid var(--soft-pink);
-            padding: 0.55rem 1.2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
+    /* --- ABOUT ME --- */
+    .about-card p {
+      font-size: 1.1rem;
+      color: var(--text-main);
+      text-align: center;
+      max-width: 750px;
+      margin: 0 auto;
+    }
 
-        .skill-pill:hover {
-            background-color: var(--primary-pink);
-            color: #ffffff;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
-        }
+    /* --- SKILLS --- */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+    }
 
-        /* 4. Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
+    .skill-pill {
+      background: #ffffff;
+      color: var(--primary);
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--primary-light);
+      transition: all 0.2s ease;
+    }
 
-        .project-card {
-            border: 1px solid var(--soft-pink);
-            border-left: 5px solid var(--primary-pink);
-            padding: 1.5rem;
-            border-radius: 14px;
-            background-color: var(--bg-light-pink);
-            transition: var(--transition);
-        }
+    .skill-pill:hover {
+      background: var(--primary);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.25);
+    }
 
-        .project-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
+    /* --- PROJECTS --- */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
 
-        .project-card h3 {
-            color: var(--text-dark);
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-        .project-card p {
-            color: var(--text-muted);
-            font-size: 0.98rem;
-            margin-bottom: 0.8rem;
-        }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
 
-        .tech-used {
-            font-size: 0.88rem;
-            color: var(--primary-pink);
-            font-weight: 600;
-            margin-bottom: 1.2rem;
-        }
+    .project-title {
+      font-size: 1.3rem;
+      color: #1f2937;
+      margin-bottom: 10px;
+    }
 
-        /* 5. Education */
-        .education-card {
-            background-color: var(--bg-light-pink);
-            padding: 1.4rem;
-            border-radius: 12px;
-            border: 1px solid var(--soft-pink);
-        }
+    .project-desc {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-size: 0.98rem;
+    }
 
-        .education-card h3 {
-            color: var(--primary-pink);
-            font-size: 1.2rem;
-        }
+    .project-tech {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
 
-        .education-card p {
-            color: var(--text-muted);
-            font-weight: 500;
-        }
+    .tech-tag {
+      font-size: 0.8rem;
+      background: #fdf2f8;
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
 
-        /* 6. Outreachy Journey Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 1.5rem;
-            border-left: 3px solid var(--soft-pink);
-            margin-left: 0.5rem;
-        }
+    .project-buttons {
+      display: flex;
+      gap: 10px;
+    }
 
-        .timeline-item {
-            position: relative;
-            margin-bottom: 1.5rem;
-        }
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      flex: 1;
+      text-align: center;
+    }
 
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
+    /* --- EDUCATION --- */
+    .education-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2.1rem;
-            top: 0.2rem;
-            width: 14px;
-            height: 14px;
-            background-color: var(--primary-pink);
-            border: 3px solid #ffffff;
-            border-radius: 50%;
-        }
+    .edu-degree {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1f2937;
+    }
 
-        .timeline-item h4 {
-            color: var(--text-dark);
-            font-size: 1.05rem;
-            margin-bottom: 0.2rem;
-        }
+    .edu-school {
+      color: var(--primary);
+      font-weight: 600;
+    }
 
-        .timeline-item p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
+    .edu-year {
+      background: var(--primary-light);
+      color: var(--primary-hover);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
 
-        /* 7. Certificates Section */
-        .certificates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.2rem;
-        }
+    /* --- OUTREACHY JOURNEY TIMELINE --- */
+    .timeline {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+    }
 
-        .cert-card {
-            background-color: var(--bg-light-pink);
-            border: 1.5px dashed var(--border-pink);
-            padding: 1.4rem;
-            border-radius: 14px;
-            text-align: center;
-            transition: var(--transition);
-        }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--primary-light);
+      transform: translateX(-50%);
+    }
 
-        .cert-card:hover {
-            background-color: #ffffff;
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
+    .timeline-step {
+      position: relative;
+      margin-bottom: 30px;
+      width: 50%;
+      padding: 0 24px;
+    }
 
-        .cert-card h3 {
-            color: var(--primary-pink);
-            font-size: 1.15rem;
-            margin-bottom: 0.3rem;
-        }
+    .timeline-step:nth-child(odd) {
+      left: 0;
+      text-align: right;
+    }
 
-        .cert-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
+    .timeline-step:nth-child(even) {
+      left: 50%;
+      text-align: left;
+    }
 
-        /* 8. Contact Me Section */
-        .contact-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-        }
+    .timeline-node {
+      position: absolute;
+      top: 16px;
+      width: 20px;
+      height: 20px;
+      background: var(--primary);
+      border: 4px solid #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px var(--primary-light);
+      z-index: 1;
+    }
 
-        .contact-btn {
-            flex: 1;
-            min-width: 200px;
-            padding: 0.85rem;
-            font-size: 1rem;
-        }
+    .timeline-step:nth-child(odd) .timeline-node {
+      right: -10px;
+    }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem 1rem 1rem 1rem;
-            color: var(--text-muted);
-            font-size: 0.92rem;
-            font-weight: 500;
-        }
+    .timeline-step:nth-child(even) .timeline-node {
+      left: -10px;
+    }
 
-        /* Mobile Responsiveness */
-        @media (max-width: 650px) {
-            .hero h1 {
-                font-size: 2.1rem;
-            }
+    .timeline-content {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(251, 207, 232, 0.5);
+    }
 
-            .hero .subtitle {
-                font-size: 1.05rem;
-            }
+    .timeline-step-num {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
 
-            section {
-                padding: 1.5rem;
-            }
+    /* --- CERTIFICATES --- */
+    .certificates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
 
-            .btn-group {
-                flex-direction: column;
-            }
+    .cert-card {
+      text-align: center;
+      border-top: 4px solid var(--primary);
+    }
 
-            .btn {
-                width: 100%;
-            }
+    .cert-card h3 {
+      color: #1f2937;
+      font-size: 1.15rem;
+    }
 
-            .contact-btn {
-                width: 100%;
-            }
-        }
-    </style>
+    /* --- CONTACT --- */
+    .contact-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-contact {
+      min-width: 160px;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      text-align: center;
+      padding: 40px 0 20px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* --- RESPONSIVE MEDIA QUERIES --- */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+
+      .hero p.subtitle {
+        font-size: 1.1rem;
+      }
+
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-step {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 0;
+        text-align: left !important;
+      }
+
+      .timeline-step:nth-child(even) {
+        left: 0;
+      }
+
+      .timeline-step:nth-child(odd) .timeline-node,
+      .timeline-step:nth-child(even) .timeline-node {
+        left: 10px;
+      }
+
+      .education-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-
-        <!-- 1. Hero Section -->
-        <header class="hero">
-            <h1>Dinara Bilal</h1>
-            <p class="subtitle">BS IT Student in Pakistan</p>
-            <div class="badge">
-                🌸 Preparing for Outreachy December 2026 Cohort
-            </div>
-            <div class="btn-group">
-                <a href="https://github.com/Dinara-Bilal" target="_blank" class="btn btn-primary">View My GitHub</a>
-                <a href="#" class="btn btn-outline">Download Resume</a>
-            </div>
-        </header>
-
-        <!-- 2. About Me Section -->
-        <section id="about">
-            <h2>About Me</h2>
-            <p class="about-text">
-                Hello! I am a passionate Information Technology student currently pursuing my BS IT in Pakistan. I have a strong foundation in software development, database management, and web technologies. I love solving technical problems and building tools that make an impact. Currently, I am actively engaging with open-source communities to prepare for the Outreachy internship.
-            </p>
-        </section>
-
-        <!-- 3. Skills Section -->
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="skills-grid">
-                <span class="skill-pill">Python</span>
-                <span class="skill-pill">MySQL</span>
-                <span class="skill-pill">HTML</span>
-                <span class="skill-pill">CSS</span>
-                <span class="skill-pill">Git</span>
-                <span class="skill-pill">GitHub</span>
-            </div>
-        </section>
-
-        <!-- 4. Projects Section -->
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="projects-grid">
-                
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <h3>1. python-practice</h3>
-                    <p>A structured repository containing Python scripts, core data structures, algorithms, and logical problem-solving exercises.</p>
-                    <p class="tech-used">Tech Used: Python, Git, GitHub</p>
-                    <div class="btn-group">
-                        <a href="https://github.com/Dinara-Bilal/python-practice" target="_blank" class="btn btn-primary">View Code</a>
-                        <a href="#" class="btn btn-outline">Live Demo</a>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <h3>2. OpenSearch Documentation</h3>
-                    <p>Open-source contributions focused on improving technical documentation, enhancing guide clarity, and developer support.</p>
-                    <p class="tech-used">Tech Used: Markdown, Git, Open Source</p>
-                    <div class="btn-group">
-                        <a href="https://github.com/Dinara-Bilal/Dinara-Bilal.github.io" target="_blank" class="btn btn-primary">View Code</a>
-                        <a href="#" class="btn btn-outline">Live Demo</a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- 5. Education Section -->
-        <section id="education">
-            <h2>Education</h2>
-            <div class="education-card">
-                <h3>BS Information Technology</h3>
-                <p>University / Institute in Pakistan</p>
-                <p><strong>Duration:</strong> 2023 – 2027</p>
-            </div>
-        </section>
-
-        <!-- 6. My Outreachy Journey -->
-        <section id="journey">
-            <h2>My Outreachy Journey</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h4>Step 1: Learned Python & Git</h4>
-                    <p>Mastered core programming foundations, database design with MySQL, and version control concepts.</p>
-                </div>
-                <div class="timeline-item">
-                    <h4>Step 2: Started Open Source</h4>
-                    <p>Began contributing to open-source documentation projects like OpenSearch and publishing repositories on GitHub.</p>
-                </div>
-                <div class="timeline-item">
-                    <h4>Step 3: Applying for Outreachy Dec 2026</h4>
-                    <p>Actively building contributions, refining technical writing, and preparing for the December 2026 application cycle.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. Certificates Section -->
-        <section id="certificates">
-            <h2>Certificates</h2>
-            <div class="certificates-grid">
-                <div class="cert-card">
-                    <h3>📜 Python Basics</h3>
-                    <p>Foundational concepts, data structures, and practical scripting.</p>
-                </div>
-                <div class="cert-card">
-                    <h3>📜 Git & GitHub</h3>
-                    <p>Version control, branching workflows, and collaborative development.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 8. Contact Me Section -->
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <div class="contact-grid">
-                <a href="https://github.com/Dinara-Bilal" target="_blank" class="btn btn-primary contact-btn">GitHub Profile</a>
-                <a href="#" target="_blank" class="btn btn-outline contact-btn">LinkedIn Profile</a>
-                <a href="mailto:dinarabilal@email.com" class="btn btn-primary contact-btn">Email Me</a>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer>
-            <p>© 2026 Dinara Bilal | Built with ❤️ & Pink Theme</p>
-        </footer>
-
+  <!-- 1. HERO SECTION -->
+  <header class="hero container">
+    <div class="badge">🎯 Preparing for Outreachy December 2026 Cohort</div>
+    <h1>Dinara Bilal</h1>
+    <p class="subtitle">BS IT Student in Pakistan</p>
+    <div class="btn-group">
+      <a href="https://github.com/dinara-bilal" target="_blank" rel="noopener" class="btn btn-primary">View My GitHub</a>
+      <a href="#" class="btn btn-secondary">Download Resume</a>
     </div>
+  </header>
+
+  <main class="container">
+    
+    <!-- 2. ABOUT ME SECTION -->
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <div class="card about-card">
+        <p>
+          Hello! I am a passionate Information Technology student based in Pakistan with a strong drive for learning and building. 
+          I love problem-solving, exploring data structures, and contributing to open-source software. Currently, I am actively building my skills and preparing to make impactful contributions as part of my Outreachy journey.
+        </p>
+      </div>
+    </section>
+
+    <!-- 3. SKILLS SECTION -->
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">MySQL</span>
+        <span class="skill-pill">HTML</span>
+        <span class="skill-pill">CSS</span>
+        <span class="skill-pill">Git</span>
+        <span class="skill-pill">GitHub</span>
+      </div>
+    </section>
+
+    <!-- 4. PROJECTS SECTION -->
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+        
+        <!-- Project 1 -->
+        <div class="card project-card">
+          <div>
+            <h3 class="project-title">python-practice</h3>
+            <p class="project-desc">A comprehensive collection of Python scripts, algorithms, data structures practice, and foundational coding exercises.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Git</span>
+            </div>
+          </div>
+          <div class="project-buttons">
+            <a href="https://github.com/dinara-bilal/python-practice" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">View Code</a>
+            <a href="#" class="btn btn-primary btn-sm">Live Demo</a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="card project-card">
+          <div>
+            <h3 class="project-title">OpenSearch Documentation</h3>
+            <p class="project-desc">Contributing to open-source documentation focused on developer guides, technical clarity, and API references.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Technical Writing</span>
+              <span class="tech-tag">Open Source</span>
+              <span class="tech-tag">GitHub</span>
+            </div>
+          </div>
+          <div class="project-buttons">
+            <a href="https://github.com/dinara-bilal" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">View Code</a>
+            <a href="#" class="btn btn-primary btn-sm">Live Demo</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. EDUCATION SECTION -->
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <div class="card education-card">
+        <div>
+          <div class="edu-degree">BS Information Technology</div>
+          <div class="edu-school">University Student • Pakistan</div>
+        </div>
+        <div class="edu-year">2023 – 2027</div>
+      </div>
+    </section>
+
+    <!-- 6. MY OUTREACHY JOURNEY -->
+    <section id="journey">
+      <h2 class="section-title">My Outreachy Journey</h2>
+      <div class="timeline">
+        
+        <div class="timeline-step">
+          <div class="timeline-node"></div>
+          <div class="timeline-content">
+            <div class="timeline-step-num">Step 1</div>
+            <h3>Learned Python & Git</h3>
+            <p>Mastered core programming fundamentals, data structures, and version control workflows.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-node"></div>
+          <div class="timeline-content">
+            <div class="timeline-step-num">Step 2</div>
+            <h3>Started Open Source</h3>
+            <p>Began making initial contributions and improving developer documentation for OpenSearch.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step">
+          <div class="timeline-node"></div>
+          <div class="timeline-content">
+            <div class="timeline-step-num">Step 3</div>
+            <h3>Applying for Outreachy Dec 2026</h3>
+            <p>Targeting open-source documentation contributions for the upcoming Outreachy cohort.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 7. CERTIFICATES SECTION -->
+    <section id="certificates">
+      <h2 class="section-title">Certificates</h2>
+      <div class="certificates-grid">
+        <div class="card cert-card">
+          <h3>Python Basics</h3>
+        </div>
+        <div class="card cert-card">
+          <h3>Git & GitHub</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. CONTACT ME SECTION -->
+    <section id="contact">
+      <h2 class="section-title">Contact Me</h2>
+      <div class="contact-buttons">
+        <a href="https://github.com/dinara-bilal" target="_blank" rel="noopener" class="btn btn-primary btn-contact">GitHub</a>
+        <a href="#" class="btn btn-primary btn-contact">LinkedIn</a>
+        <a href="mailto:dinarabilal@email.com" class="btn btn-primary btn-contact">Email</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Dinara Bilal | Built with ❤️ & Pink Theme</p>
+  </footer>
 
 </body>
 </html>
