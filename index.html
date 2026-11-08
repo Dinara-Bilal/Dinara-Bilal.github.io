@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dinara Bilal | Portfolio</title>
     <style>
-        /* Base & Theme Setup */
+        /* Base & Color Variables */
         :root {
             --primary-pink: #ec4899;
+            --pink-hover: #db2777;
             --soft-pink: #fbcfe8;
-            --bg-light-pink: #fdf2f8;
-            --text-dark: #374151;
-            --text-muted: #6b7280;
-            --white: #ffffff;
-            --shadow: 0 4px 15px rgba(236, 72, 153, 0.1);
+            --bg-light-pink: #fff5f7;
+            --card-bg: #ffffff;
+            --text-dark: #1f2937;
+            --text-muted: #4b5563;
+            --border-pink: #f472b6;
+            --shadow: 0 4px 20px rgba(236, 72, 153, 0.12);
+            --transition: all 0.3s ease;
         }
 
         * {
@@ -27,143 +30,338 @@
             background-color: var(--bg-light-pink);
             color: var(--text-dark);
             line-height: 1.6;
+            padding: 0;
         }
 
-        /* Container */
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 2rem 1.5rem;
+            padding: 2rem 1.2rem;
         }
 
-        /* Header / Hero Section */
-        header {
-            text-align: center;
-            padding: 3rem 1.5rem;
-            background: linear-gradient(135deg, var(--white) 0%, var(--soft-pink) 100%);
+        /* Section Block Base */
+        section {
+            background-color: var(--card-bg);
+            padding: 2.2rem;
+            margin-bottom: 2rem;
             border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(251, 207, 232, 0.6);
+        }
+
+        h2 {
+            color: var(--primary-pink);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--soft-pink);
+            border-radius: 2px;
+            margin-top: 4px;
+        }
+
+        /* Base Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 0.65rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-pink);
+            color: #ffffff;
+            border: 2px solid var(--primary-pink);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--pink-hover);
+            border-color: var(--pink-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-pink);
+            border: 2px solid var(--primary-pink);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-pink);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        /* 1. Hero Section */
+        .hero {
+            text-align: center;
+            padding: 3.5rem 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, var(--bg-light-pink) 50%, var(--soft-pink) 100%);
+            border-radius: 24px;
             box-shadow: var(--shadow);
             margin-bottom: 2rem;
             border: 1px solid rgba(236, 72, 153, 0.2);
         }
 
-        header h1 {
+        .hero h1 {
             color: var(--primary-pink);
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 2.8rem;
+            margin-bottom: 0.4rem;
+            font-weight: 800;
         }
 
-        header p.subtitle {
-            font-size: 1.2rem;
+        .hero .subtitle {
+            font-size: 1.25rem;
             color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        /* Outreachy Goal Banner */
-        .goal-banner {
-            display: inline-block;
-            margin-top: 1.2rem;
-            background-color: var(--primary-pink);
-            color: var(--white);
-            padding: 0.6rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.95rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
         }
 
-        /* General Section Styling */
-        section {
-            background-color: var(--white);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-        }
-
-        h2 {
-            color: var(--primary-pink);
-            font-size: 1.5rem;
-            margin-bottom: 1.2rem;
-            border-bottom: 2px solid var(--soft-pink);
-            padding-bottom: 0.4rem;
+        .badge {
             display: inline-block;
+            background-color: var(--primary-pink);
+            color: #ffffff;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(236, 72, 153, 0.25);
         }
 
-        /* Skills Pills */
+        .hero .btn-group {
+            justify-content: center;
+        }
+
+        /* 2. About Me */
+        .about-text {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* 3. Skills Section */
         .skills-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-top: 0.5rem;
+            gap: 0.8rem;
         }
 
-        .skill-tag {
+        .skill-pill {
             background-color: var(--bg-light-pink);
             color: var(--primary-pink);
-            border: 1px solid var(--soft-pink);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
+            border: 1.5px solid var(--soft-pink);
+            padding: 0.55rem 1.2rem;
+            border-radius: 50px;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: all 0.2s ease;
+            transition: var(--transition);
         }
 
-        .skill-tag:hover {
+        .skill-pill:hover {
             background-color: var(--primary-pink);
-            color: var(--white);
-            transform: translateY(-2px);
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
         }
 
-        /* Projects Section */
+        /* 4. Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
         .project-card {
             border: 1px solid var(--soft-pink);
-            border-left: 4px solid var(--primary-pink);
-            padding: 1.2rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
+            border-left: 5px solid var(--primary-pink);
+            padding: 1.5rem;
+            border-radius: 14px;
             background-color: var(--bg-light-pink);
-            transition: transform 0.2s ease;
+            transition: var(--transition);
         }
 
         .project-card:hover {
-            transform: translateX(4px);
-        }
-
-        .project-card:last-child {
-            margin-bottom: 0;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
         }
 
         .project-card h3 {
             color: var(--text-dark);
-            margin-bottom: 0.3rem;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
         }
 
         .project-card p {
             color: var(--text-muted);
+            font-size: 0.98rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .tech-used {
+            font-size: 0.88rem;
+            color: var(--primary-pink);
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+
+        /* 5. Education */
+        .education-card {
+            background-color: var(--bg-light-pink);
+            padding: 1.4rem;
+            border-radius: 12px;
+            border: 1px solid var(--soft-pink);
+        }
+
+        .education-card h3 {
+            color: var(--primary-pink);
+            font-size: 1.2rem;
+        }
+
+        .education-card p {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* 6. Outreachy Journey Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--soft-pink);
+            margin-left: 0.5rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.1rem;
+            top: 0.2rem;
+            width: 14px;
+            height: 14px;
+            background-color: var(--primary-pink);
+            border: 3px solid #ffffff;
+            border-radius: 50%;
+        }
+
+        .timeline-item h4 {
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-item p {
+            color: var(--text-muted);
             font-size: 0.95rem;
+        }
+
+        /* 7. Certificates Section */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .cert-card {
+            background-color: var(--bg-light-pink);
+            border: 1.5px dashed var(--border-pink);
+            padding: 1.4rem;
+            border-radius: 14px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .cert-card:hover {
+            background-color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .cert-card h3 {
+            color: var(--primary-pink);
+            font-size: 1.15rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .cert-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* 8. Contact Me Section */
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .contact-btn {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.85rem;
+            font-size: 1rem;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 1.5rem;
+            padding: 2rem 1rem 1rem 1rem;
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.92rem;
+            font-weight: 500;
         }
 
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 2rem;
+        /* Mobile Responsiveness */
+        @media (max-width: 650px) {
+            .hero h1 {
+                font-size: 2.1rem;
             }
 
-            header p.subtitle {
-                font-size: 1rem;
+            .hero .subtitle {
+                font-size: 1.05rem;
             }
 
             section {
                 padding: 1.5rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .contact-btn {
+                width: 100%;
             }
         }
     </style>
@@ -171,51 +369,130 @@
 <body>
 
     <div class="container">
-        <!-- Hero Header -->
-        <header>
+
+        <!-- 1. Hero Section -->
+        <header class="hero">
             <h1>Dinara Bilal</h1>
             <p class="subtitle">BS IT Student in Pakistan</p>
-            <div class="goal-banner">
-                🎯 Preparing for Outreachy December 2026 Cohort
+            <div class="badge">
+                🌸 Preparing for Outreachy December 2026 Cohort
+            </div>
+            <div class="btn-group">
+                <a href="https://github.com/Dinara-Bilal" target="_blank" class="btn btn-primary">View My GitHub</a>
+                <a href="#" class="btn btn-outline">Download Resume</a>
             </div>
         </header>
 
-        <!-- About Me Section -->
-        <section>
+        <!-- 2. About Me Section -->
+        <section id="about">
             <h2>About Me</h2>
-            <p>Hello! I am a passionate Information Technology student based in Pakistan. I love problem-solving, open-source development, and creating neat web applications. I am actively working towards contributing to open-source communities as part of my Outreachy journey.</p>
+            <p class="about-text">
+                Hello! I am a passionate Information Technology student currently pursuing my BS IT in Pakistan. I have a strong foundation in software development, database management, and web technologies. I love solving technical problems and building tools that make an impact. Currently, I am actively engaging with open-source communities to prepare for the Outreachy internship.
+            </p>
         </section>
 
-        <!-- Technical Skills -->
-        <section>
+        <!-- 3. Skills Section -->
+        <section id="skills">
             <h2>Skills</h2>
             <div class="skills-grid">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">MySQL</span>
-                <span class="skill-tag">HTML</span>
-                <span class="skill-tag">CSS</span>
-                <span class="skill-tag">Git</span>
-                <span class="skill-tag">GitHub</span>
+                <span class="skill-pill">Python</span>
+                <span class="skill-pill">MySQL</span>
+                <span class="skill-pill">HTML</span>
+                <span class="skill-pill">CSS</span>
+                <span class="skill-pill">Git</span>
+                <span class="skill-pill">GitHub</span>
             </div>
         </section>
 
-        <!-- Projects -->
-        <section>
+        <!-- 4. Projects Section -->
+        <section id="projects">
             <h2>Projects</h2>
-            <div class="project-card">
-                <h3>OpenSearch Documentation</h3>
-                <p>Open-source documentation contributions focusing on technical writing, clarity, and developer guide enhancements.</p>
+            <div class="projects-grid">
+                
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <h3>1. python-practice</h3>
+                    <p>A structured repository containing Python scripts, core data structures, algorithms, and logical problem-solving exercises.</p>
+                    <p class="tech-used">Tech Used: Python, Git, GitHub</p>
+                    <div class="btn-group">
+                        <a href="https://github.com/Dinara-Bilal/python-practice" target="_blank" class="btn btn-primary">View Code</a>
+                        <a href="#" class="btn btn-outline">Live Demo</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <h3>2. OpenSearch Documentation</h3>
+                    <p>Open-source contributions focused on improving technical documentation, enhancing guide clarity, and developer support.</p>
+                    <p class="tech-used">Tech Used: Markdown, Git, Open Source</p>
+                    <div class="btn-group">
+                        <a href="https://github.com/Dinara-Bilal/Dinara-Bilal.github.io" target="_blank" class="btn btn-primary">View Code</a>
+                        <a href="#" class="btn btn-outline">Live Demo</a>
+                    </div>
+                </div>
+
             </div>
-            <div class="project-card">
-                <h3>python-practice</h3>
-                <p>A collection of Python scripts, data structures practice, and core programming exercises showcasing fundamentals.</p>
+        </section>
+
+        <!-- 5. Education Section -->
+        <section id="education">
+            <h2>Education</h2>
+            <div class="education-card">
+                <h3>BS Information Technology</h3>
+                <p>University / Institute in Pakistan</p>
+                <p><strong>Duration:</strong> 2023 – 2027</p>
+            </div>
+        </section>
+
+        <!-- 6. My Outreachy Journey -->
+        <section id="journey">
+            <h2>My Outreachy Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Step 1: Learned Python & Git</h4>
+                    <p>Mastered core programming foundations, database design with MySQL, and version control concepts.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Step 2: Started Open Source</h4>
+                    <p>Began contributing to open-source documentation projects like OpenSearch and publishing repositories on GitHub.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Step 3: Applying for Outreachy Dec 2026</h4>
+                    <p>Actively building contributions, refining technical writing, and preparing for the December 2026 application cycle.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Certificates Section -->
+        <section id="certificates">
+            <h2>Certificates</h2>
+            <div class="certificates-grid">
+                <div class="cert-card">
+                    <h3>📜 Python Basics</h3>
+                    <p>Foundational concepts, data structures, and practical scripting.</p>
+                </div>
+                <div class="cert-card">
+                    <h3>📜 Git & GitHub</h3>
+                    <p>Version control, branching workflows, and collaborative development.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Contact Me Section -->
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <div class="contact-grid">
+                <a href="https://github.com/Dinara-Bilal" target="_blank" class="btn btn-primary contact-btn">GitHub Profile</a>
+                <a href="#" target="_blank" class="btn btn-outline contact-btn">LinkedIn Profile</a>
+                <a href="mailto:dinarabilal@email.com" class="btn btn-primary contact-btn">Email Me</a>
             </div>
         </section>
 
         <!-- Footer -->
         <footer>
-            <p>&copy; 2026 Dinara Bilal | Built with ❤️ & Pink Theme</p>
+            <p>© 2026 Dinara Bilal | Built with ❤️ & Pink Theme</p>
         </footer>
+
     </div>
 
 </body>
